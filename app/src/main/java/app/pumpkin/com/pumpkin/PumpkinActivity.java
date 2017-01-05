@@ -1,13 +1,19 @@
 package app.pumpkin.com.pumpkin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.Button;
 
 public class PumpkinActivity extends AppCompatActivity {
+
+
+    private Button mAboutButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +22,8 @@ public class PumpkinActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pumpkin);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mAboutButton=(Button)findViewById(R.id.action_about);
     }
 
     @Override
@@ -38,6 +46,10 @@ public class PumpkinActivity extends AppCompatActivity {
         }
         if (id == R.id.action_help) {
             return true;
+        }
+        if(id == R.id.action_about){
+            Intent aboutIntent=new Intent(PumpkinActivity.this,AboutPumpkin.class);
+            startActivity(aboutIntent);
         }
 
         return super.onOptionsItemSelected(item);
